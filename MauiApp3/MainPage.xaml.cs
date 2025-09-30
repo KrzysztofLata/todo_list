@@ -27,5 +27,11 @@ namespace MauiApp3
 
             }
         }
+
+        private void removetask(object sender, EventArgs e)
+        {
+            var selected=taskcollection.SelectedItem;
+            Tasklist.Remove((task)selected);
+        }
     }
 }

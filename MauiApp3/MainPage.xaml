@@ -3,8 +3,16 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="MauiApp3.MainPage" BackgroundColor="Aqua">
 
-    <VerticalStackLayout>
-        <Grid Margin="20,30">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="1*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid Margin="20,30" Grid.Row="0" Grid.Column="0">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="280"/>
             </Grid.ColumnDefinitions>
@@ -17,7 +25,7 @@
                 <Button Text="+" Clicked="Button_Clicked" BackgroundColor="Yellow" TextColor="black" BorderWidth="2" BorderColor="black"></Button>
             </HorizontalStackLayout>
         </Grid>
-        <CollectionView ItemsSource="{Binding Tasklist}">
+        <CollectionView ItemsSource="{Binding Tasklist}" SelectionMode="Single" x:Name="taskcollection" Grid.Row="1" Grid.Column="0">
             <CollectionView.ItemTemplate>
                 <DataTemplate>
                     <HorizontalStackLayout BackgroundColor="Yellow">
@@ -26,6 +34,7 @@
                 </DataTemplate>
             </CollectionView.ItemTemplate>
         </CollectionView>
-    </VerticalStackLayout>
+        <Button Text="Delete" Clicked="removetask" Grid.Row="2" Grid.Column="0" WidthRequest="*"></Button>
+    </Grid>
 
 </ContentPage>

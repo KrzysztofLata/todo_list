@@ -1,0 +1,52 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ShoppListMAUI.MainPage"
+             Title="Shopping List">
+
+    <Grid Margin="5">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0.1*"/>
+            <RowDefinition Height="0.8*"/>
+            <RowDefinition Height="0.1*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <Entry Grid.Column="0" 
+               Grid.ColumnSpan="2"
+               x:Name="EntryProduct"/>
+        <Button Grid.Column="2"
+                Margin="5"
+                MaximumHeightRequest="60"
+                Text="Add Product"
+                x:Name="AddButton"
+                Clicked="AddButton_Clicked"/>
+
+        <CollectionView Grid.ColumnSpan="3"
+                        Grid.Row="1"
+                        ItemsSource="{Binding Products}"
+                        SelectionMode="Single"
+                        x:Name="ProductList">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <HorizontalStackLayout>
+                        <Label Text="{Binding Name} "/>
+                        <Label Text="{Binding Quantity}"/>
+                    </HorizontalStackLayout>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+        <Button Grid.Column="1"
+                Grid.Row="2"
+                Margin="5"
+                MaximumHeightRequest="60"
+                Text="Delete Item"
+                x:Name="DeleteButton"
+                Clicked="DeleteButton_Clicked"/>
+    </Grid>
+
+</ContentPage>

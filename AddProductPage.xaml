@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ShoppListMAUI.AddProductPage"
+             Title="AddProductPage">
+    <VerticalStackLayout>
+        <Entry Grid.Column="0" 
+           Grid.ColumnSpan="2"
+           x:Name="EntryProduct"/>
+        <Button Grid.Column="2"
+            Margin="5"
+            MaximumHeightRequest="60"
+            Text="Add Product"
+            x:Name="AddButton"
+            Clicked="AddButton_Clicked"/>
+    </VerticalStackLayout>
+</ContentPage>

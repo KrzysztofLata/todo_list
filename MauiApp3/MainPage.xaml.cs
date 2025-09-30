@@ -1,24 +1,31 @@
-﻿namespace MauiApp3
+﻿using System.Collections.ObjectModel;
+
+namespace MauiApp3
 {
     public partial class MainPage : ContentPage
     {
         int count = 0;
-
+        public class task
+        {
+            public string tsk { get; set; }
+        }
+        public ObservableCollection<task> Tasklist { get; set; }
         public MainPage()
         {
             InitializeComponent();
+            Tasklist = new ObservableCollection<task>();
+            BindingContext = this;
         }
 
-        private void OnCounterClicked(object? sender, EventArgs e)
+        private void Button_Clicked(object sender, EventArgs e)
         {
-            count++;
+            string addtask = taskentry.Text;
+            taskentry.Text = "";
+            if (addtask != null && addtask != "")
+            {
+                Tasklist.Add(new task { tsk = addtask });
 
-            if (count == 1)
-                CounterBtn.Text = $"Clicked {count} time";
-            else
-                CounterBtn.Text = $"Clicked {count} times";
-
-            SemanticScreenReader.Announce(CounterBtn.Text);
+            }
         }
     }
 }
